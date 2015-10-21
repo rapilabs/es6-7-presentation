@@ -75,26 +75,37 @@ class Tree extends Plant {
 
 ---
 
-## Argument Rest/Spread & Defaults (*args)
+## The Spread Operator (*args)
 
- * sorta like *args:
-   - use the '...' operator with arguments to capture as an array
-   - use '...' again to spread an array as arguments, eg when calling functions
- * sorry no kwargs but at hey at least we get defaults
+ * sorta like *args, but also for arrays:
+   - use the spread '...' operator with arguments/destructuring to capture as an array
+   - use '...' again to spread an array as arguments/array literal, eg when calling functions
 
 ```javascript
 
-function resty(a, ...c) {
+function spread(a, ...c) {
   console.log(a + ';' + c.join(','));
 }
 
-resty('1', '2', '3');
+spread('1', '2', '3');
 // '1;2,3'
 
 var anArray = ['x', 'y', 'z'];
-resty(...anArray);
+spread(...anArray);
 // 'x;y,z'
 
+// can also be used with arrays:
+[a, ...c] = [1, 2, 3];
+
+// merging:
+[1, ...c, 4];
+```
+
+---
+
+## Argument Defaults (not quite **kwargs)
+
+```javascript
 function hello(who='World') {
   console.log('Hello ' + who);
 }
