@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+      blockquote {
+       font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+# es6/7 for python developers
+
+---
+
+## modules
+
+> Namespaces are one honking great idea -- let's do more of those!
+
+ * js has been without modules for longer than i've been programming
+
+```javascript
+// pi.js
+export var PI = 3.14;
+
+// app.js
+import {PI} from './pi.js';
+
+
+// or use 'default'
+
+// hello.js
+export default function hello() {
+  console.log('World');
+}
+
+// app.js
+import hello from './hello.js';
+
+hello();
+```
+
+---
+
+## classes: a _consistent_ way of defining object types
+
+> There should be one -- and preferably only one -- obvious way to do it.
+
+```javascript
+class Tree extends Plant {
+
+  constructor(location) {
+    super(location);
+    // do some stuff
+  }
+
+  quack() {
+    console.log("Trees don't quack");
+  }
+}
+```
+
+---
+
+## Argument Rest/Spread & Defaults (*args)
+
+ * sorta like *args:
+   - use the '...' operator with arguments to capture as an array
+   - use '...' again to spread an array as arguments, eg when calling functions
+ * sorry no kwargs but at hey at least we get defaults
+
+```javascript
+
+function resty(a, ...c) {
+  console.log(a + ';' + c.join(','));
+}
+
+resty('1', '2', '3');
+// '1;2,3'
+
+var anArray = ['x', 'y', 'z'];
+resty(...anArray);
+// 'x;y,z'
+
+function hello(who='World') {
+  console.log('Hello ' + who);
+}
+
+hello(' MelbDjango');
+// Hello MelbDjango
+
+hello();
+// Hello World
+
+```
+
+---
+
+## Destructuring (Unpacking)
+
+```javascript
+var [a, ,b] = [1,2,3];
+a === 1;
+b === 3;
+
+var {op, lhs, rhs} = getASTNode();
+```
+
+---
+
+## Template Strings (a sucky version of string formatting)
+
+> In the face of ambiguity, refuse the temptation to guess.
+
+ * Just pulls in from any variable declared in the scope
+
+---
+
+## Unicode
+
+ * Todo
+
+---
+
+## Iterators, Generators
+
+> If the implementation is hard to explain, it's a bad idea.
+
+ * Don't bother?
+
+> im sure they could have made the syntax more opaque and clunky, they didnt try hard enough
+
+ * but wait there's more...
+
+---
+
+## Comprehensions
+
+ * Both array & generator comprehensions!
+ * Format is for-if-statement, rather than statement-for-if
+
+```javascript
+var someArray = [
+  for (thing of things)
+    if (thing.quack)
+      thing.quack()
+];
+
+// as a generator:
+var someArray = (
+  for (thing of things)
+    if (thing.quack)
+      thing.quack()
+);
+```
+
+---
+
+## Decorators
+
+ * todo
+
+---
+
+## async/wait
+
+ * todo
+
+---
+
+## And more!
+
+ * Arrow functions
+ * Constants
+ * 
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
