@@ -110,7 +110,7 @@ function hello(who='World') {
   console.log('Hello ' + who);
 }
 
-hello(' MelbDjango');
+hello('MelbDjango');
 // Hello MelbDjango
 
 hello();
@@ -134,13 +134,20 @@ var {op, lhs, rhs} = getASTNode();
 
 ## Template Strings (a sucky version of string formatting)
 
-> In the face of ambiguity, refuse the temptation to guess.
+> FAIL: In the face of ambiguity, refuse the temptation to guess.
 
  * Just pulls in from any variable declared in the scope
 
 ```javascript
 var who = 'MelbDjango';
 console.log(`Hello ${who}`);
+```
+
+which would be the equivalent of doing this in python:
+
+```python
+who = 'MelbDjango'
+'Hello {who}'.format(**locals())
 ```
 
 ---
@@ -153,7 +160,7 @@ console.log(`Hello ${who}`);
 
 ## Iterators, Generators
 
-> If the implementation is hard to explain, it's a bad idea.
+> FAIL: If the implementation is hard to explain, it's a bad idea.
 
  * Don't bother?
 
